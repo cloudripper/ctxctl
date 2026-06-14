@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+    "name": "ctxctl",
+    "displayName": "ctxctl: Context Control",
+    "version": "0.1.0",
+    "description": "Restrict the top-level (orchestrator) thread to a small allowlist of orchestration tools, forcing real work into subagents so the main context stays clean. Subagents are never restricted.",
+    "author": {
+        "name": "cloudripper",
+        "url": "https://github.com/cloudripper"
+    },
+    "homepage": "https://github.com/cloudripper/ctxctl",
+    "repository": "https://github.com/cloudripper/ctxctl",
+    "license": "MIT",
+    "keywords": [
+        "context",
+        "subagents",
+        "orchestration",
+        "hooks",
+        "guardrails",
+        "pretooluse"
+    ],
+    "userConfig": {
+        "allowlist": {
+            "type": "string",
+            "title": "Top-level tool allowlist",
+            "description": "Comma-separated tool names the top-level thread may still call (no spaces). Everything else is blocked at the top level and must run inside a subagent. Subagents are never restricted. If a tool you need gets blocked, the denial message names it exactly so you can add it here.",
+            "default": "Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup"
+        },
+        "mode": {
+            "type": "string",
+            "title": "Block mode",
+            "description": "What to do when the top-level thread calls a non-allowlisted tool: 'deny' to block it outright, or 'ask' to prompt you for confirmation each time.",
+            "default": "deny"
+        }
+    }
+}

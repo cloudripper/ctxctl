@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "ctxctl",
+  "description": "Context-control tooling for Claude Code.",
+  "owner": {
+    "name": "cloudripper",
+    "url": "https://github.com/cloudripper"
+  },
+  "plugins": [
+    {
+      "name": "ctxctl",
+      "description": "Restrict the top-level thread to orchestration tools; force work into subagents.",
+      "source": "./plugins/ctxctl",
+      "category": "workflow"
+    }
+  ]
+}
