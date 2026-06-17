@@ -24,7 +24,7 @@
             "type": "string",
             "title": "Top-level tool allowlist",
             "description": "Comma-separated tool names the top-level thread may still call (no spaces). Everything else is blocked at the top level and must run inside a subagent. Subagents are never restricted. If a tool you need gets blocked, the denial message names it exactly so you can add it here.",
-            "default": "Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage"
+            "default": "Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode"
         },
         "mode": {
             "type": "string",

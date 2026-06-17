@@ -45,7 +45,7 @@ You'll be prompted for each option. Leave any field blank to keep the default.
 
 | Option      | Default                                                              | Meaning |
 | ----------- | -------------------------------------------------------------------- | ------- |
-| `allowlist` | `Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage` | Comma-separated tool names the top-level thread may still call (no spaces). |
+| `allowlist` | `Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode` | Comma-separated tool names the top-level thread may still call (no spaces). |
 | `mode`      | `deny`                                                               | `deny` blocks outright; `ask` prompts you to confirm each blocked top-level call. |
 
 If a tool you want at the top level gets blocked, the denial message prints its
