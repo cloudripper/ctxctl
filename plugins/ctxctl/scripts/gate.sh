@@ -25,7 +25,7 @@
 # tool name) the hook allows the call. A context-control convenience should
 # never be able to lock you out of every tool.
 
-ALLOWLIST_DEFAULT="Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode"
+ALLOWLIST_DEFAULT="Read,Grep,Glob,Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode"
 
 ALLOWLIST="${CLAUDE_PLUGIN_OPTION_ALLOWLIST:-${CLAUDE_PLUGIN_OPTION_allowlist:-${1:-}}}"
 MODE="${CLAUDE_PLUGIN_OPTION_MODE:-${CLAUDE_PLUGIN_OPTION_mode:-${2:-deny}}}"

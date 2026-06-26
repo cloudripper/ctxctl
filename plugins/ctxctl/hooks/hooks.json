@@ -1,5 +1,5 @@
 {
-  "description": "ctxctl: restrict the top-level (orchestrator) thread to a small allowlist of orchestration tools; force real work into subagents.",
+  "description": "ctxctl: restrict the top-level (orchestrator) thread to a small allowlist of orchestration tools; force real work into subagents; inject a summary contract into every subagent at spawn.",
   "hooks": {
     "PreToolUse": [
       {
@@ -8,6 +8,17 @@
           {
             "type": "command",
             "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/gate.sh\""
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/brief.sh\""
           }
         ]
       }

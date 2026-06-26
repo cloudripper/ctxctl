@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
     "name": "ctxctl",
     "displayName": "ctxctl: Context Control",
-    "version": "0.1.0",
+    "version": "0.2.1",
     "description": "Restrict the top-level (orchestrator) thread to a small allowlist of orchestration tools, forcing real work into subagents so the main context stays clean. Subagents are never restricted.",
     "author": {
         "name": "cloudripper",
@@ -23,14 +23,20 @@
         "allowlist": {
             "type": "string",
             "title": "Top-level tool allowlist",
-            "description": "Comma-separated tool names the top-level thread may still call (no spaces). Everything else is blocked at the top level and must run inside a subagent. Subagents are never restricted. If a tool you need gets blocked, the denial message names it exactly so you can add it here.",
-            "default": "Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode"
+            "description": "Comma-separated tool names the top-level thread may still call (no spaces). Everything else is blocked at the top level and must run inside a subagent. Subagents are never restricted. Read/Grep/Glob are included by default so the orchestrator can inspect code to plan; bulk reads should still go to a subagent. If a tool you need gets blocked, the denial message names it exactly so you can add it here.",
+            "default": "Read,Grep,Glob,Agent,Skill,TodoWrite,AskUserQuestion,ExitPlanMode,ScheduleWakeup,SendMessage,TaskCreate,TaskUpdate,TaskList,TaskGet,TaskOutput,TaskStop,EnterPlanMode"
         },
         "mode": {
             "type": "string",
             "title": "Block mode",
             "description": "What to do when the top-level thread calls a non-allowlisted tool: 'deny' to block it outright, or 'ask' to prompt you for confirmation each time.",
             "default": "deny"
+        },
+        "summary": {
+            "type": "string",
+            "title": "Subagent summary contract",
+            "description": "Text injected into every subagent at spawn (via the SubagentStart hook) telling it how to write its final handoff. Leave blank to use the built-in contract, which asks for outcome, files touched, discrete findings (including incidental ones), and loose ends.",
+            "default": ""
         }
     }
 }
